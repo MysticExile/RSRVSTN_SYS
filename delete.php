@@ -1,7 +1,7 @@
 <?php
 /** @var mysqli $db */
 
-//Require music data & image helpers to use variable in this file
+//Require data & image helpers to use variable in this file
 require_once "includes/database.php";
 require_once "includes/image-helpers.php";
 
@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
     }
 
     // DELETE DATA
-    // Remove the album data from the database with the existing albumId
+    // Remove the reservation data from the database with the existing reservationId
     $query = "DELETE FROM reservations WHERE id = '$reservationId'";
     mysqli_query($db, $query) or die ('Error: ' . mysqli_error($db));
 
