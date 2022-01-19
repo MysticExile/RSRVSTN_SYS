@@ -36,11 +36,11 @@ if (isset($_POST['submit'])) {
                     'id' => $user['id']
                 ];
             } else {
-                //error onjuiste inloggegevens
+                //error incorrect login information
                 $errors['loginFailed'] = 'De combinatie van email en wachtwoord is bij ons niet bekend';
             }
         } else {
-            //error onjuiste inloggegevens
+            //error incorrect login information
             $errors['loginFailed'] = 'De combinatie van email en wachtwoord is bij ons niet bekend';
         }
     }
