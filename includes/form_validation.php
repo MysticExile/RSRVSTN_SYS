@@ -11,5 +11,5 @@ if ($fulldesc == "") {
     $errors['fulldesc'] = 'Beschrijving kan niet leeg zijn.';
 }
 if ($date == "") {
-    $errors['date'] = 'Date cannot be emtpy';
+    $errors['date'] = 'Datum kan niet leeg zijn.';
 }
