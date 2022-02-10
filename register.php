@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
     }
     //if there are no errors parse the email and password
     if (empty($errors)) {
-        //hash the password to prevent rainbowtable attacks
+        //hash the password to prevent rainbow table attacks
         $password = password_hash($password, PASSWORD_DEFAULT);
         $userID = rand(1, 999999999);
         $query = "INSERT INTO users (email, password, id) VALUES ('$email', '$password','$userID')";

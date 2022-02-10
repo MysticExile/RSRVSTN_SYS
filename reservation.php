@@ -9,7 +9,6 @@ if (!isset($_SESSION['loggedInUser'])) {
 }
 // Connection data
 require_once "includes/database.php";
-require_once "includes/image-helpers.php";
 // Look at all the reservations
 $query = "SELECT * FROM reservations";
 $result = mysqli_query($db, $query)

@@ -59,10 +59,10 @@ if (isset($_POST['submit'])) {
 <body>
 <nav>
     <div class="navigation">
-        <button class="buttonactive"><a class="link" href="index.php">Home</a></button>
+        <button class="button"><a class="link" href="index.php">Home</a></button>
         <button class="button"><a class="link" href="over.php">Over</a></button>
         <button class="button"><a class="link" href="services.php">Services</a></button>
-        <button class="button"><a class="link" href="reservation.php">Afspraak maken</a></button>
+        <button class="buttonactive"><a class="link" href="reservation.php">Afspraak maken</a></button>
         <button class="button"><a class="link" href="contact.php">Contact</a></button>
         <button class="button"><a class="link" href="login.php">Login</a></button>
     </div>
@@ -79,7 +79,7 @@ if (isset($_POST['submit'])) {
             <div class="data-field">
                 <label for="description">Korte beschrijving probleem</label>
                 <input id="description" type="text" name="description"
-                       value="<?= isset($description) ? htmlentities($description) : '' ?>"/>
+                       value="<?= isset($description) ? htmlentities($description) : 'Vul hier een korte beschrijving in van uw probleem.' ?>"/>
                 <span class="errors"><?= $errors['description'] ?? '' ?></span>
             </div>
             <!-- See 'create.php' for additional comments -->

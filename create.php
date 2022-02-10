@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
     $fulldesc = mysqli_escape_string($db, $_POST['fulldesc']);
     $image = mysqli_escape_string($db, $_POST['image']);
     $date = mysqli_escape_string($db, $_POST['date']);
-    $id = mysqli_escape_string($db, rand());
+    $reservationId = mysqli_escape_string($db, rand());
     $userid = mysqli_escape_string($db, $email);
 
     //Require the form validation handling
@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
 
         //Save the record to the database
         $query = "INSERT INTO reservations (id,description,platform,fulldesc,media,date,email)
-                  VALUES ('$id', '$description', '$platform', '$fulldesc', '$image','$date','$userid')";
+                  VALUES ('$reservationId', '$description', '$platform', '$fulldesc', '$image','$date','$userid')";
         $result = mysqli_query($db, $query) or die('Error: ' . mysqli_error($db) . ' with query ' . $query);
 
         //If everything works it will redirect to the read page, else it will throw an error
@@ -67,10 +67,10 @@ if (isset($_POST['submit'])) {
 <body>
 <nav>
     <div class="navigation">
-        <button class="buttonactive"><a class="link" href="index.php">Home</a></button>
+        <button class="button"><a class="link" href="index.php">Home</a></button>
         <button class="button"><a class="link" href="over.php">Over</a></button>
         <button class="button"><a class="link" href="services.php">Services</a></button>
-        <button class="button"><a class="link" href="reservation.php">Afspraak maken</a></button>
+        <button class="buttonactive"><a class="link" href="reservation.php">Afspraak maken</a></button>
         <button class="button"><a class="link" href="contact.php">Contact</a></button>
         <button class="button"><a class="link" href="login.php">Login</a></button>
     </div>
@@ -82,16 +82,18 @@ if (isset($_POST['submit'])) {
             <div><span class="errors"><?= $errors['db']; ?></span></div>
         <?php } ?>
 
-        <!-- enctype="multipart/form-data" no characters will be converted -->
+        <!-- enctype="multipart/form-data" no characters will be converted.
+        we'll be using hmtlentities to prevent XSS attacks
+        -->
         <form action="" method="post" enctype="multipart/form-data">
             <div class="data-field">
                 <label for="description">Korte beschrijving probleem</label>
                 <input id="description" type="text" name="description"
-                       value="<?= isset($description) ? htmlentities($description) : '' ?>"/>
+                       value="<?= isset($description) ? htmlentities($description) : 'Vul hier een korte beschrijving in' ?>"/>
                 <span class="errors"><?= $errors['description'] ?? '' ?></span>
             </div>
-            <!-- This was originalle meant to be a dropdown menu however I would need to properly deal with that later,
-            this will need to suffice for now -->
+            <!-- This was originally meant to be a dropdown menu. I will properly deal with that later,
+            this will need to suffice for now. -->
             <div class="data-field">
                 <label for="platform">Platform</label>
                 <input id="platform" type="text" name="platform" list="platform-name">
