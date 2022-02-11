@@ -88,15 +88,15 @@ if (isset($_POST['submit'])) {
         <form action="" method="post" enctype="multipart/form-data">
             <div class="data-field">
                 <label for="description">Korte beschrijving probleem</label>
-                <input id="description" type="text" name="description"
-                       value="<?= isset($description) ? htmlentities($description) : 'Vul hier een korte beschrijving in' ?>"/>
+                <input id="description" type="text" name="description" placeholder="Vul hier een korte beschrijving in."
+                       value="<?= isset($description) ? htmlentities($description) : '' ?>"/>
                 <span class="errors"><?= $errors['description'] ?? '' ?></span>
             </div>
             <!-- This was originally meant to be a dropdown menu. I will properly deal with that later,
             this will need to suffice for now. -->
             <div class="data-field">
                 <label for="platform">Platform</label>
-                <input id="platform" type="text" name="platform" list="platform-name">
+                <input id="platform" type="text" name="platform" list="platform-name" placeholder="Kies een platform:">
                 <datalist id="platform-name">
                     <option value="<?= isset($platform) ? htmlentities($platform) : 'Computer' ?>"/>
                     <option value="<?= isset($platform) ? htmlentities($platform) : 'Laptop' ?>"/>

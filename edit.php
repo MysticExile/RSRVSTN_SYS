@@ -78,14 +78,14 @@ if (isset($_POST['submit'])) {
         <form action="" method="post" enctype="multipart/form-data">
             <div class="data-field">
                 <label for="description">Korte beschrijving probleem</label>
-                <input id="description" type="text" name="description"
-                       value="<?= isset($description) ? htmlentities($description) : 'Vul hier een korte beschrijving in van uw probleem.' ?>"/>
+                <input id="description" type="text" name="description" placeholder="Vul hier een korte beschrijving in van uw probleem."
+                       value="<?= isset($description) ? htmlentities($description) : '' ?>"/>
                 <span class="errors"><?= $errors['description'] ?? '' ?></span>
             </div>
             <!-- See 'create.php' for additional comments -->
             <div class="data-field">
                 <label for="platform">Platform</label>
-                <input id="platform" type="text" name="platform" list="platform-name">
+                <input id="platform" type="text" name="platform" list="platform-name" placeholder="Kies een platform:">
                 <datalist id="platform-name">
                     <option value="<?= isset($platform) ? htmlentities($platform) : 'Computer' ?>"/>
                     <option value="<?= isset($platform) ? htmlentities($platform) : 'Laptop' ?>"/>

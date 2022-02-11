@@ -10,6 +10,7 @@ if (isset($_POST['submit'])) {
     // To remove the image we need to query the file name from the db.
     // Get the record from the database result
     $reservationId = mysqli_escape_string($db, $_POST['id']);
+
     $query = "SELECT * FROM reservations WHERE id = '$reservationId'";
     $result = mysqli_query($db, $query) or die ('Error: ' . $query);
 
